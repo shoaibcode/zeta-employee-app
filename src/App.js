@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from "react";
 import "./styles/css/sup_helpers.css";
 
-import { getEmployees, editEmployee, createEmployee } from "./utils/request";
+import {
+  getEmployeesRequest,
+  updateEmployeeRequest,
+  deleteEmployeeRequest,
+  createEmployeeRequest
+} from "./utils/request";
 import PaginationFooter from "./components/PaginationFooter";
 import EmployeeManage from "./components/EmployeeManage";
+import EmployeeList from "./components/EmployeeList";
 
 const perCount = 5;
 
@@ -18,7 +24,7 @@ function Employees() {
   const last = currentPage * perCount - 1;
 
   useEffect(() => {
-    getEmployees().then(employees => {
+    getEmployeesRequest().then(employees => {
       setEmployees(employees);
 
       const employeePerPage = Math.ceil(employees.length / perCount);
@@ -27,27 +33,51 @@ function Employees() {
   }, []);
 
   const createNewEmployee = employee => {
-    createEmployee(employee);
-    setEmployees([...employees, employee]);
+    // Todo: Think about this?
+    createEmployeeRequest(employee).then(employee => {
+      setEmployees([...employees, employee]);
+    });
+
     toggleModal(false);
   };
 
-  const editEmployee = (updatedEmployee, index) => {
+  const editEmployee = updatedEmployee => {
     const newEmployees = employees.map((employee, employeeIndex) => {
-      if (index === employeeIndex) {
+      if (employee.id === updatedEmployee.id) {
         return updatedEmployee;
       }
 
       return employee;
     });
 
-    editEmployee(updatedEmployee);
+    updateEmployeeRequest(updatedEmployee, updatedEmployee.id);
     setEmployees(newEmployees);
     toggleModal(false);
+    changeActiveEmployee(undefined);
+  };
+
+  const deleteEmployee = index => {
+    const newEmployees = employees.filter((employee, employeeIndex) => {
+      return index !== employeeIndex;
+    });
+
+    setEmployees(newEmployees);
+    deleteEmployeeRequest(employees[index].id);
   };
 
   const derieveEmployeesFromState = () => {
     return employees.slice(start, last);
+  };
+
+  const onActionHandler = ({ key, employee, index }) => {
+    console.log(key === "edit");
+
+    if (key === "delete") {
+      deleteEmployee(index);
+    } else if (key === "edit") {
+      changeActiveEmployee(employee);
+      toggleModal(true);
+    }
   };
 
   return (
@@ -89,39 +119,10 @@ function Employees() {
             </th>
           </tr>
         </thead>
-        <tbody>
-          {employees.length ? (
-            derieveEmployeesFromState().map((employee, index) => {
-              const {
-                id,
-                preferredFullName,
-                employeeCode,
-                jobTitleName,
-                phoneNumber,
-                emailAddress,
-                region,
-                dob
-              } = employee;
-
-              return (
-                <tr key={index}>
-                  <th className="br-b-xs pd-sm" scope="row">
-                    {id}
-                  </th>
-                  <td className="br-b-xs pd-sm">{preferredFullName}</td>
-                  <td className="br-b-xs pd-sm">{employeeCode}</td>
-                  <td className="br-b-xs pd-sm">{jobTitleName}</td>
-                  <td className="br-b-xs pd-sm">{phoneNumber}</td>
-                  <td className="br-b-xs pd-sm">{emailAddress}</td>
-                  <td className="br-b-xs pd-sm">{region}</td>
-                  <td className="br-b-xs pd-sm">{dob}</td>
-                </tr>
-              );
-            })
-          ) : (
-            <div className="text-center mr-tb-md">loading...</div>
-          )}
-        </tbody>
+        <EmployeeList
+          list={derieveEmployeesFromState()}
+          onActionHandler={onActionHandler}
+        />
       </table>
 
       {showModal && (

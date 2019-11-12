@@ -1,25 +1,50 @@
 const BASE_API_ENDPOINT = "http://localhost:8080/employees";
 
-export const getEmployees = () => {
-  return fetch(BASE_API_ENDPOINT).then(res => res.json());
+export const getEmployeesRequest = () => {
+  return APICall({
+    url: `${BASE_API_ENDPOINT}`,
+    method: "GET"
+  });
 };
 
-export const createEmployee = data => {
-  return fetch(BASE_API_ENDPOINT, {
+export const createEmployeeRequest = data => {
+  return APICall({
+    url: `${BASE_API_ENDPOINT}`,
     method: "POST",
-    body: JSON.stringify(data)
-  }).then(res => res.json());
+    data
+  });
 };
 
-export const editEmployee = data => {
-  return fetch(BASE_API_ENDPOINT, {
+export const updateEmployeeRequest = (data, employeeId) => {
+  return APICall({
+    url: `${BASE_API_ENDPOINT}/${employeeId}`,
     method: "PUT",
-    body: JSON.stringify(data)
-  }).then(res => res.json());
+    data
+  });
 };
 
-export const deleteEmployee = employeeId => {
-  return fetch(`${BASE_API_ENDPOINT}/${employeeId}`, {
-    method: "DELETE"
-  }).then(res => res.json());
+export const deleteEmployeeRequest = employeeId => {
+  return APICall({
+    url: `${BASE_API_ENDPOINT}/${employeeId}`,
+    method: "DELETE",
+    data: null
+  });
+};
+
+export const APICall = ({
+  url = BASE_API_ENDPOINT,
+  method = "GET",
+  data = null
+}) => {
+  const fetchOptions = {
+    headers: {
+      "Content-Type": "application/json"
+    },
+    method
+  };
+
+  if (data) {
+    fetchOptions["body"] = JSON.stringify(data);
+  }
+  return fetch(url, fetchOptions).then(res => res.json());
 };

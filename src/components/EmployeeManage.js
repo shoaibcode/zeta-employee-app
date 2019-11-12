@@ -38,7 +38,9 @@ const EmployeeManage = ({
 
   const submitHandler = () => {
     onSubmit({
+      id: employee.id,
       employeeCode,
+      jobTitleName,
       firstName,
       lastName,
       preferredFullName: `${firstName} ${lastName}`,
@@ -94,7 +96,7 @@ const EmployeeManage = ({
           <label>
             Job Title
             <Input
-              type="email"
+              type="text"
               value={jobTitleName}
               onChange={changeJobTitleName}
               required
@@ -146,7 +148,7 @@ const EmployeeManage = ({
         </div>
 
         <div>
-          <button type="submit"> Create</button>
+          <button type="submit"> Save</button>
           <button onClick={onCancel}> Cancel</button>
         </div>
       </div>
