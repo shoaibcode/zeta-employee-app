@@ -865,16 +865,12 @@
 }
 
 @mixin flex-utils($prefix) {
-  /*Stack child items vertically*/
   .#{$prefix}-vbox {
     display: flex;
-    /*Align children vetically*/
     flex-direction: column;
     align-content: flex-start;
-    /* overflow: hidden; */
-    /*Prevent extending beyond boundaries*/
   }
-  /*Stack child items horizontally*/
+
   .#{$prefix}-hbox {
     display: flex;
     /*Align children horizontally*/
@@ -882,8 +878,6 @@
     align-content: flex-start;
     /*Wrap items to next line on main-axis*/
     flex-wrap: wrap;
-    /* overflow: hidden; */
-    /*Prevent extending beyond boundaries*/
   }
   /*Stretch item along parent's main-axis*/
   .#{$prefix}-full {
