@@ -11,6 +11,7 @@ import PaginationFooter from "./components/PaginationFooter";
 import EmployeeManage from "./components/EmployeeManage";
 import EmployeeList from "./components/EmployeeList";
 import EmployeeView from "./components/EmployeeView";
+import Input from "./components/Input";
 
 const perCount = 5;
 
@@ -23,6 +24,10 @@ function Employees() {
   const [activeEmployee, changeActiveEmployee] = useState(undefined);
   const [sortBy, toggleSort] = useState({ key: "id", ASC: true });
   const [viewModal, toggleViewModal] = useState(false);
+  const [filterOptionSelected, changeFilterOptionSelected] = useState(
+    "preferredFullName"
+  );
+  const [filterText, changeFilterText] = useState("");
 
   const start = perCount * currentPage - perCount;
   const last = currentPage * perCount;
@@ -71,7 +76,22 @@ function Employees() {
   };
 
   const derieveEmployeesFromState = () => {
-    let newEmployee = employees.sort((a, b) => {
+    let filteredEmployees = [];
+    if (filterText) {
+      employees.forEach(employee => {
+        if (
+          employee[filterOptionSelected]
+            .toLowerCase()
+            .includes(filterText.trim().toLowerCase())
+        ) {
+          filteredEmployees.push(employee);
+        }
+      });
+    } else {
+      filteredEmployees = employees;
+    }
+
+    let sortedEmployee = filteredEmployees.sort((a, b) => {
       if (sortBy.ASC) {
         return parseInt(b[sortBy.key], 10) - parseInt(a[sortBy.key], 10);
       } else {
@@ -79,8 +99,7 @@ function Employees() {
       }
     });
 
-    console.log({ start, last });
-    return newEmployee.slice(start, last);
+    return sortedEmployee.slice(start, last);
   };
 
   const onActionHandler = ({ key, employee, index }) => {
@@ -106,6 +125,31 @@ function Employees() {
             Create Employee
           </button>
         </div>
+
+        <div className="flex-hbox">
+          <div>
+            <select
+              value={filterOptionSelected}
+              onChange={event => {
+                changeFilterOptionSelected(event.target.value);
+              }}
+            >
+              <option value="preferredFullName">Full Name</option>
+              <option value="jobTitleName">Title</option>
+              <option value="emailAddress">Email Address</option>
+              <option value="region">Region</option>
+            </select>
+          </div>
+          <div>
+            <Input
+              type="text"
+              value={filterText}
+              onChange={changeFilterText}
+              placeholder="Enter Search text"
+            />
+          </div>
+        </div>
+
         <table className="mr-t-xxl w-percent-100">
           <thead>
             <tr className="br-sm pb-b-sm">

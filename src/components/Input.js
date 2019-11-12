@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Input = ({ type = "text", value, onChange, required }) => {
+const Input = ({ type = "text", value, onChange, required, placeholder }) => {
   return (
     <input
       type={type}
@@ -9,17 +9,22 @@ const Input = ({ type = "text", value, onChange, required }) => {
       value={value}
       onChange={event => onChange(event.target.value)}
       required={required}
+      placeholder={placeholder}
     />
   );
 };
 
 Input.propTypes = {
   type: PropTypes.string.isRequired,
-  required: PropTypes.bool
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  required: PropTypes.bool,
+  placeholder: PropTypes.string
 };
 
 Input.defaultProps = {
-  required: true
+  required: true,
+  placeholder: ""
 };
 
 export default Input;
