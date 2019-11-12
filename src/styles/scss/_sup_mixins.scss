@@ -1384,24 +1384,6 @@
   }
 }
 
-@mixin underline-variants($prefix, $color, $size, $height) {
-  .underline-#{$prefix}-#{$size} {
-    position: relative;
-    margin-bottom: 15px;
-    &::after {
-      content: "";
-      position: absolute;
-      top: 100%;
-      left: 0;
-      width: 60px;
-      display: block;
-      margin: 2px 0 5px 0;
-      height: $height;
-      background-color: $color;
-    }
-  }
-}
-
 @mixin overlay() {
   .overlay-container {
     position: relative;
@@ -1416,18 +1398,6 @@
       z-index: 11;
       background-color: rgba(0, 0, 0, 0.59);
     }
-  }
-}
-
-@mixin overlay-variants($prefix, $bg-color, $color) {
-  .overlay-#{$prefix} {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: $bg-color;
-    color: $color;
-    height: 100%;
   }
 }
 

@@ -98,7 +98,7 @@ function Employees() {
   return (
     <div className="overlay-container">
       <div className="w-percent-80 mr-auto">
-        <div className="flex-hbox flex-main-end">
+        <div className="flex-hbox flex-main-end pd-tb-md">
           <button
             className="pd-sm br-radius-sm bg-info cursor-pointer"
             onClick={() => toggleModal(true)}

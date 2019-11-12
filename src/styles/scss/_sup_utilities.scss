@@ -68,28 +68,6 @@
 @include color-variant("faintgrey", $color-faintgrey, $white);
 @include color-variant("ghost", $ghost, "inherit");
 @include color-variant("vapor", $vapor, "inherit");
-@include color-variant("white-smoke", $white-smoke, "inherit");
-@include color-variant("oil-light", $color-oil-light, "inherit");
-@include color-variant("light-green", $color-light-green, "inherit");
-@include color-variant("mint-green", $color-mint-green, "inherit");
-@include color-variant("near-Debian-red", $color-near-Debian-red, "inherit");
-
-@include color-variant("light-purple", $light-purple, $color-body);
-@include color-variant("mercury", $mercury, $color-body);
-
-@include color-variant("section", $color-section, "inherit");
-
-@include underline-variants("info", $color-info, "sm", 1px);
-@include underline-variants("info", $color-info, "md", 2px);
-@include underline-variants("info", $color-info, "lg", 3px);
-
-@include underline-variants("warning", $color-warning, "sm", 1px);
-@include underline-variants("warning", $color-warning, "md", 2px);
-@include underline-variants("warning", $color-warning, "lg", 3px);
-
-@include underline-variants("success", $color-success, "sm", 1px);
-@include underline-variants("success", $color-success, "md", 2px);
-@include underline-variants("success", $color-success, "lg", 3px);
 
 @include float-utils("float");
 @include flex-utils("flex");
@@ -99,9 +77,6 @@
 @include link-text-defaults();
 @include ellipsis();
 @include overlay();
-
-@include overlay-variants("body", $color-body, $white);
-@include overlay-variants("dark-grey", $color-dark-grey, $white);
 
 @include hover-variants("vapor", $vapor);
 @include vertical-align-variants();
