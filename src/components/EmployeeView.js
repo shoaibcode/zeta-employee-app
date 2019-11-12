@@ -56,12 +56,10 @@ const EmployeeView = ({ employee, toggleViewModal }) => {
 };
 
 EmployeeView.propTypes = {
-  type: PropTypes.string.isRequired,
-  required: PropTypes.bool
+  employee: PropTypes.object.isRequired,
+  toggleViewModal: PropTypes.func.isRequired
 };
 
-EmployeeView.defaultProps = {
-  required: true
-};
+EmployeeView.defaultProps = {};
 
 export default EmployeeView;

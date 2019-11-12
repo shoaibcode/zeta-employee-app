@@ -41,4 +41,12 @@ const EmployeeListItem = ({ index, employee, onActionHandler }) => {
   );
 };
 
+EmployeeListItem.propTypes = {
+  index: PropTypes.number.isRequired,
+  employee: PropTypes.object.isRequired,
+  onActionHandler: PropTypes.func.isRequired
+};
+
+EmployeeListItem.defaultProps = {};
+
 export default EmployeeListItem;

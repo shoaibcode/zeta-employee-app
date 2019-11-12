@@ -21,7 +21,8 @@ const EmployeeList = ({ list, onActionHandler }) => {
 };
 
 EmployeeList.propTypes = {
-  list: PropTypes.array.isRequired
+  list: PropTypes.array.isRequired,
+  onActionHandler: PropTypes.func.isRequired
 };
 
 EmployeeList.defaultProps = {};

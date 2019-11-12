@@ -32,4 +32,10 @@ const Dropdown = ({ onActionHandler }) => {
   );
 };
 
+Dropdown.propTypes = {
+  onActionHandler: PropTypes.func.isRequired
+};
+
+Dropdown.defaultProps = {};
+
 export default Dropdown;

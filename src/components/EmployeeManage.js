@@ -181,12 +181,14 @@ const EmployeeManage = ({
 };
 
 EmployeeManage.propTypes = {
-  type: PropTypes.string.isRequired,
-  required: PropTypes.bool
+  onSubmit: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  employee: PropTypes.object.isRequired,
+  title: PropTypes.string
 };
 
 EmployeeManage.defaultProps = {
-  required: true
+  title: ""
 };
 
 export default EmployeeManage;
