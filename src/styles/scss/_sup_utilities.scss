@@ -3,7 +3,6 @@
 @include cursor-defaults();
 @include position-defaults();
 @include display-defaults();
-@include visibility-defaults();
 @include font-defaults();
 @include text-defaults();
 @include scroll-defaults();
@@ -30,7 +29,6 @@
 @include border-variant("xs", $border-xs, $color-border);
 @include border-variant("sm", $border-sm, $color-border);
 @include border-variant("md", $border-md, $color-border);
-@include border-variant("smoke", $border-xs, $smoke);
 
 @include border-radius-default();
 @include border-radius-variant("no", $border-radius-no);
@@ -38,44 +36,20 @@
 @include border-radius-variant("sm", $border-radius-sm);
 @include border-radius-variant("md", $border-radius-md);
 @include border-radius-variant("lg", $border-radius-lg);
-@include border-radius-variant("xl", $border-radius-xl);
-
-@include hr-variant("sm", $hr-sm, $hr-width-sm, $hr-color);
-@include hr-variant("md", $hr-md, $hr-width-md, $hr-color);
 
 @include width-variants("w");
 @include height-variants("h");
 
 @include color-variant("info", $color-info, $white);
-@include color-variant("warning", $color-warning, $white);
-@include color-variant("success", $color-success, $white);
-@include color-variant("error", $color-error, $white);
-@include color-variant("highlight", $color-highlight, "inherit");
-@include color-variant("border", $color-border, "inherit");
-@include color-variant("hover", $color-hover, "inherit");
-@include color-variant("selected", $color-selected, "inherit");
-@include color-variant("body", $color-body, "inherit");
-@include color-variant("yellow", $color-yellow, $color-body);
 @include color-variant("black", $black, $white);
 @include color-variant("white", $white, "inherit");
 @include color-variant("opaque", $opaque, "inherit");
 @include color-variant("link", $color-link, $white);
-@include color-variant("bluegrey", $color-bluegrey, $white);
-@include color-variant("orange", $color-orange, $white);
-@include color-variant("slategrey", $color-slategrey, $white);
-@include color-variant("blue", $color-blue, $white);
-@include color-variant("lightgrey", $color-lightgrey, $white);
-@include color-variant("faintgrey", $color-faintgrey, $white);
 @include color-variant("ghost", $ghost, "inherit");
 @include color-variant("vapor", $vapor, "inherit");
 
-@include float-utils("float");
 @include flex-utils("flex");
-@include paper-utils();
 
-@include font-size-defaults();
-@include link-text-defaults();
-@include ellipsis();
 @include overlay();
 
 @include hover-variants("vapor", $vapor);
