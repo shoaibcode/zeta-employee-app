@@ -110,7 +110,7 @@ function Employees() {
           <thead>
             <tr className="br-sm pb-b-sm">
               <th
-                className="br-b-xs w-px-80"
+                className="br-b-xs pd-sm text-muted w-px-80 cursor-pointer"
                 scope="col"
                 onClick={() => {
                   if (sortBy.key !== "id") {
@@ -127,11 +127,11 @@ function Employees() {
                   </span>
                 )}
               </th>
-              <th className="br-b-xs" scope="col">
+              <th className="br-b-xs pd-sm text-muted" scope="col">
                 Full Name
               </th>
               <th
-                className="br-b-xs"
+                className="br-b-xs pd-sm text-muted cursor-pointer"
                 scope="col"
                 onClick={() => {
                   if (sortBy.key !== "employeeCode") {
@@ -148,22 +148,22 @@ function Employees() {
                   </span>
                 )}
               </th>
-              <th className="br-b-xs" scope="col">
+              <th className="br-b-xs pd-sm text-muted" scope="col">
                 Job Title
               </th>
-              <th className="br-b-xs" scope="col">
+              <th className="br-b-xs pd-sm text-muted" scope="col">
                 Phone Number
               </th>
-              <th className="br-b-xs" scope="col">
+              <th className="br-b-xs pd-sm text-muted" scope="col">
                 Email ID
               </th>
-              <th className="br-b-xs" scope="col">
+              <th className="br-b-xs pd-sm text-muted" scope="col">
                 Region
               </th>
-              <th className="br-b-xs" scope="col">
+              <th className="br-b-xs pd-sm text-muted" scope="col">
                 DOB
               </th>
-              <th className="br-b-xs" scope="col">
+              <th className="br-b-xs pd-sm text-muted" scope="col">
                 Actions
               </th>
             </tr>
@@ -178,7 +178,10 @@ function Employees() {
           <EmployeeManage
             employee={activeEmployee}
             onSubmit={activeEmployee ? editEmployee : createNewEmployee}
-            onCancel={() => toggleModal(false)}
+            onCancel={() => {
+              changeActiveEmployee(undefined);
+              toggleModal(false);
+            }}
             title={activeEmployee ? "Edit Employee" : "Create Employee"}
           />
         )}
