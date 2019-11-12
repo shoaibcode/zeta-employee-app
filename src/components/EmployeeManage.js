@@ -52,107 +52,131 @@ const EmployeeManage = ({
   };
 
   return (
-    <form onSubmit={submitHandler}>
-      <div>
-        <div>{title}</div>
-        <div>
-          <label>
-            EM
-            <Input
-              type="text"
-              value={employeeCode}
-              onChange={changeEmployeeCode}
-              required
-            />
-          </label>
-        </div>
-
-        <div>
+    <div className="overlay-content flex-vbox flex-main-center">
+      <div className="w-percent-40 mr-auto bg-white br-radius-sm">
+        <form onSubmit={submitHandler}>
           <div>
-            <label>
-              First Name
-              <Input
-                type="text"
-                value={firstName}
-                onChange={changeFirstName}
-                required
-              />
-            </label>
-          </div>
-          <div>
-            <label>
-              Last Name
-              <Input
-                type="text"
-                value={lastName}
-                onChange={changeLastName}
-                required
-              />
-            </label>
-          </div>
-        </div>
+            <div className="br-b-xs pd-md">{title}</div>
 
-        <div>
-          <label>
-            Job Title
-            <Input
-              type="text"
-              value={jobTitleName}
-              onChange={changeJobTitleName}
-              required
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Email
-            <Input
-              type="email"
-              value={emailAddress}
-              onChange={changeEmailAddress}
-              required
-            />
-          </label>
-        </div>
+            <div className="pd-lg">
+              <div>
+                <label>
+                  <div> EM</div>
+                  <Input
+                    type="text"
+                    value={employeeCode}
+                    onChange={changeEmployeeCode}
+                    required
+                  />
+                </label>
+              </div>
 
-        <div>
-          <label>
-            Phone Number
-            <Input
-              type="number"
-              value={phoneNumber}
-              onChange={changePhoneNumber}
-              required
-            />
-          </label>
-        </div>
+              <div className="flex-hbox mr-tb-sm flex-main-space-between">
+                <div className="w-percent-45">
+                  <label>
+                    <div> First Name</div>
+                    <Input
+                      type="text"
+                      value={firstName}
+                      onChange={changeFirstName}
+                      required
+                    />
+                  </label>
+                </div>
+                <div className="w-percent-45">
+                  <label>
+                    <div> Last Name</div>
+                    <Input
+                      type="text"
+                      value={lastName}
+                      onChange={changeLastName}
+                      required
+                    />
+                  </label>
+                </div>
+              </div>
 
-        <div>
-          <div>
-            <label>
-              Region
-              <Input
-                type="text"
-                value={region}
-                onChange={changeRegion}
-                required
-              />
-            </label>
+              <div className="mr-tb-sm">
+                <div>
+                  <label>
+                    Job Title
+                    <Input
+                      type="text"
+                      value={jobTitleName}
+                      onChange={changeJobTitleName}
+                      required
+                    />
+                  </label>
+                </div>
+                <div>
+                  <label>
+                    Email
+                    <Input
+                      type="email"
+                      value={emailAddress}
+                      onChange={changeEmailAddress}
+                      required
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <label>
+                  Phone Number
+                  <Input
+                    type="number"
+                    value={phoneNumber}
+                    onChange={changePhoneNumber}
+                    required
+                  />
+                </label>
+              </div>
+
+              <div className="mr-tb-sm">
+                <div>
+                  <label>
+                    Region
+                    <Input
+                      type="text"
+                      value={region}
+                      onChange={changeRegion}
+                      required
+                    />
+                  </label>
+                </div>
+                <div>
+                  <label>
+                    DOB
+                    <Input
+                      type="date"
+                      value={dob}
+                      onChange={changeDOB}
+                      required
+                    />
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <button
+                  className="pd-sm mr-r-sm w-px-100 br-radius-sm bg-info cursor-pointer"
+                  type="submit"
+                >
+                  Save
+                </button>
+                <button
+                  className="pd-sm br-radius-sm w-px-100 cursor-pointer"
+                  onClick={onCancel}
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
           </div>
-          <div>
-            <label>
-              DOB
-              <Input type="date" value={dob} onChange={changeDOB} required />
-            </label>
-          </div>
-        </div>
-
-        <div>
-          <button type="submit"> Save</button>
-          <button onClick={onCancel}> Cancel</button>
-        </div>
+        </form>
       </div>
-    </form>
+    </div>
   );
 };
 

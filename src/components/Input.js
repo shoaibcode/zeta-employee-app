@@ -5,6 +5,7 @@ const Input = ({ type = "text", value, onChange, required }) => {
   return (
     <input
       type={type}
+      className="w-percent-100 pd-xs"
       value={value}
       onChange={event => onChange(event.target.value)}
       required={required}

@@ -33,9 +33,13 @@ const EmployeeListItem = ({ index, employee, onActionHandler }) => {
       <td className="br-b-xs pd-sm">{emailAddress}</td>
       <td className="br-b-xs pd-sm">{region}</td>
       <td className="br-b-xs pd-sm">{dob}</td>
-      <td className="br-b-xs pd-sm">
+      <td className="br-b-xs pd-sm position-relative">
         <span onClick={() => toggleOptions(true)}>...</span>
-        {showOptions ? <Dropdown onActionHandler={actionHandler} /> : null}
+        {showOptions ? (
+          <div className="position-absolute position-index-1">
+            <Dropdown onActionHandler={actionHandler} />
+          </div>
+        ) : null}
       </td>
     </tr>
   );

@@ -95,7 +95,6 @@
 @include flex-utils("flex");
 @include paper-utils();
 
-@include avatar-defaults();
 @include font-size-defaults();
 @include link-text-defaults();
 @include ellipsis();
@@ -105,7 +104,8 @@
 @include overlay-variants("dark-grey", $color-dark-grey, $white);
 
 @include hover-variants("vapor", $vapor);
-@include code-editor-defaults();
 @include whitespace-variants();
-@include social-media-defaults($social-media-color-map);
 @include vertical-align-variants();
+@include arrowIcon();
+@include list-style();
+@include position-index();

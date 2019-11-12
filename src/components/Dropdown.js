@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 
 const Dropdown = ({ onActionHandler }) => {
   return (
-    <ul>
+    <ul className="br-xs pd-no w-px-100 text-center br-radius-sm bg-white">
       <li
+        className="list-style-none pd-sm "
         onClick={() => {
           onActionHandler({ key: "edit" });
         }}
@@ -12,6 +13,7 @@ const Dropdown = ({ onActionHandler }) => {
         Edit
       </li>
       <li
+        className="list-style-none pd-sm"
         onClick={() => {
           onActionHandler({ key: "delete" });
         }}
