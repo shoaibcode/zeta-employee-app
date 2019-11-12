@@ -44,7 +44,6 @@ function Employees() {
 
   // API Calls
   const createNewEmployee = employee => {
-    // Todo: Think about this?
     createEmployeeRequest(employee).then(employee => {
       setEmployees([...employees, employee]);
     });
