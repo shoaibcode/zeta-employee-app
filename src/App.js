@@ -10,6 +10,7 @@ import {
 import PaginationFooter from "./components/PaginationFooter";
 import EmployeeManage from "./components/EmployeeManage";
 import EmployeeList from "./components/EmployeeList";
+import EmployeeView from "./components/EmployeeView";
 
 const perCount = 5;
 
@@ -21,6 +22,7 @@ function Employees() {
   const [showModal, toggleModal] = useState(false);
   const [activeEmployee, changeActiveEmployee] = useState(undefined);
   const [sortBy, toggleSort] = useState({ key: "id", ASC: true });
+  const [viewModal, toggleViewModal] = useState(false);
 
   const start = perCount * currentPage - perCount;
   const last = currentPage * perCount;
@@ -82,17 +84,20 @@ function Employees() {
   };
 
   const onActionHandler = ({ key, employee, index }) => {
-    if (key === "delete") {
-      deleteEmployee(index);
+    if (key === "view") {
+      changeActiveEmployee(employee);
+      toggleViewModal(true);
     } else if (key === "edit") {
       changeActiveEmployee(employee);
       toggleModal(true);
+    } else if (key === "delete") {
+      deleteEmployee(index);
     }
   };
 
   return (
     <div className="overlay-container">
-      <div className="w-percent-70 mr-auto">
+      <div className="w-percent-80 mr-auto">
         <div className="flex-hbox flex-main-end">
           <button
             className="pd-sm br-radius-sm bg-info cursor-pointer"
@@ -103,7 +108,7 @@ function Employees() {
         </div>
         <table className="mr-t-xxl w-percent-100">
           <thead>
-            <tr className="br-sm">
+            <tr className="br-sm pb-b-sm">
               <th
                 className="br-b-xs w-px-80"
                 scope="col"
@@ -175,6 +180,13 @@ function Employees() {
             onSubmit={activeEmployee ? editEmployee : createNewEmployee}
             onCancel={() => toggleModal(false)}
             title={activeEmployee ? "Edit Employee" : "Create Employee"}
+          />
+        )}
+
+        {viewModal && (
+          <EmployeeView
+            employee={activeEmployee}
+            toggleViewModal={toggleViewModal}
           />
         )}
 

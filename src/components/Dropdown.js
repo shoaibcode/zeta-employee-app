@@ -5,7 +5,15 @@ const Dropdown = ({ onActionHandler }) => {
   return (
     <ul className="br-xs pd-no w-px-100 text-center br-radius-sm bg-white">
       <li
-        className="list-style-none pd-sm "
+        className="list-style-none pd-sm cursor-pointer"
+        onClick={() => {
+          onActionHandler({ key: "view" });
+        }}
+      >
+        View
+      </li>
+      <li
+        className="list-style-none pd-sm cursor-pointer"
         onClick={() => {
           onActionHandler({ key: "edit" });
         }}
@@ -13,7 +21,7 @@ const Dropdown = ({ onActionHandler }) => {
         Edit
       </li>
       <li
-        className="list-style-none pd-sm"
+        className="list-style-none pd-sm cursor-pointer"
         onClick={() => {
           onActionHandler({ key: "delete" });
         }}

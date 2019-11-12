@@ -104,8 +104,9 @@
 @include overlay-variants("dark-grey", $color-dark-grey, $white);
 
 @include hover-variants("vapor", $vapor);
-@include whitespace-variants();
 @include vertical-align-variants();
 @include arrowIcon();
 @include list-style();
 @include position-index();
+@include position-utility();
+@include hover-utility();

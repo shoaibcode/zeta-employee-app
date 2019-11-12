@@ -1431,18 +1431,6 @@
   }
 }
 
-@mixin whitespace-variants() {
-  .whitespace-nowrap {
-    white-space: nowrap;
-  }
-  .whitespace-prewrap {
-    white-space: pre-wrap;
-  }
-  .whitespace-pre-line {
-    white-space: pre-line;
-  }
-}
-
 @mixin vertical-align-variants() {
   .vertical-align-top {
     vertical-align: top;
@@ -1466,6 +1454,18 @@
 @mixin position-index {
   .position-index-1 {
     z-index: 1;
+  }
+}
+
+@mixin position-utility {
+  .top--1 {
+    top: -1px;
+  }
+}
+
+@mixin hover-utility {
+  .hover-element-children:hover .hover-target {
+    display: block;
   }
 }
 

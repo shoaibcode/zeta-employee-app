@@ -2,7 +2,7 @@ import React from "react";
 
 const Pagination = ({ perPage, currentPage, onClick }) => {
   return (
-    <div className="w-percent-30 mr-auto">
+    <div className="flex-hbox flex-main-center">
       <ul className="mr-no mr-tb-sm pd-no flex-hbox">
         {Array(perPage)
           .fill(3)

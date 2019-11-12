@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import Dropdown from "./Dropdown";
 
 const EmployeeListItem = ({ index, employee, onActionHandler }) => {
-  const [showOptions, toggleOptions] = useState(false);
   const {
     id,
     preferredFullName,
@@ -18,7 +17,6 @@ const EmployeeListItem = ({ index, employee, onActionHandler }) => {
 
   const actionHandler = ({ key }) => {
     onActionHandler({ key, employee, index });
-    toggleOptions(false);
   };
 
   return (
@@ -26,20 +24,18 @@ const EmployeeListItem = ({ index, employee, onActionHandler }) => {
       <th className="br-b-xs pd-sm" scope="row">
         {id}
       </th>
-      <td className="br-b-xs pd-sm">{preferredFullName}</td>
+      <td className="br-b-xs pd-sm w-px-100">{preferredFullName}</td>
       <td className="br-b-xs pd-sm">{employeeCode}</td>
-      <td className="br-b-xs pd-sm">{jobTitleName}</td>
+      <td className="br-b-xs pd-sm w-px-100">{jobTitleName}</td>
       <td className="br-b-xs pd-sm">{phoneNumber}</td>
       <td className="br-b-xs pd-sm">{emailAddress}</td>
       <td className="br-b-xs pd-sm">{region}</td>
-      <td className="br-b-xs pd-sm">{dob}</td>
-      <td className="br-b-xs pd-sm position-relative">
-        <span onClick={() => toggleOptions(true)}>...</span>
-        {showOptions ? (
-          <div className="position-absolute position-index-1">
-            <Dropdown onActionHandler={actionHandler} />
-          </div>
-        ) : null}
+      <td className="br-b-xs pd-sm w-px-100">{dob}</td>
+      <td className="br-b-xs pd-sm position-relative hover-element-children">
+        <span className="cursor-pointer">...</span>
+        <div className="position-absolute hover-target display-none position-index-1 top--1">
+          <Dropdown onActionHandler={actionHandler} />
+        </div>
       </td>
     </tr>
   );
